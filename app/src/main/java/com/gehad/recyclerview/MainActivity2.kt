@@ -19,12 +19,12 @@ class MainActivity2: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
-        //الربط استقبال username
+       
             textview = findViewById(R.id.textView)
         var intent: Intent = intent
         var myusername = intent.getStringExtra("username")
         textview.text = myusername
-        // إعداد شريط الأدوات
+       
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -32,7 +32,7 @@ class MainActivity2: AppCompatActivity() {
             finishAffinity()
         }
 
-        // إعداد RecyclerView
+       
         newRecyclerView = findViewById(R.id.recyclerView)
        newRecyclerView.layoutManager = LinearLayoutManager(this)
       newRecyclerView.setHasFixedSize(true)
@@ -79,14 +79,14 @@ class MainActivity2: AppCompatActivity() {
 | -Rating: 6.0/10 
 | -Publish Date: September 7, 2017  """
         )
-        // إنشاء القائمة الأولية
+        
         newArrayList = ArrayList()
         for (i in descripe.indices) {
             val film = Films(imgeid[i], descripe[i])
             newArrayList.add(film)
         }
 
-        // إعداد المحول وربطه بـ RecyclerView
+        
         adapter = MyAdapter(newArrayList)
        newRecyclerView .adapter = adapter
     }
@@ -119,13 +119,12 @@ class MainActivity2: AppCompatActivity() {
             Films(R.drawable.newimg5, "Casablanca\nPublish Date: (1942)\nIMDb Rating: 8.5/10\nDescription: A timeless romance set during World War II, revolving around love, sacrifice, and resistance")
         )
 
-        // إضافة العناصر الجديدة إلى بداية القائمة
         newArrayList.addAll(0, newItems)
 
-        // تحديث المحول وإعلامه بالتغيير
+        
         adapter.notifyItemRangeInserted(0, newItems.size)
 
-        // التمرير إلى الأعلى
+      
         newRecyclerView.scrollToPosition(0)
     }
 }
